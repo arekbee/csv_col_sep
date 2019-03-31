@@ -152,7 +152,9 @@ process <- function(filePath) {
   
   
   tmp <- unlist(strsplit(filePath, ".",fixed = TRUE))
-  outfiles <- paste0(tmp[1], ".csv")
+  outFileName <- paste0(tmp[length(tmp) - 2:1], collapse = '')
+  outFileName <- str_remove(outFileName, '/')
+  outfiles <- paste0(outFileName, ".csv")
   dsingle2$file <- outfiles
   dsingle2$Idx <- NULL
   return(dsingle2)
